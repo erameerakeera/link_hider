@@ -1,5 +1,6 @@
 from flask import Flask, request, redirect
 import random, string
+import os
 
 app = Flask(__name__)
 links = {}
@@ -10,13 +11,13 @@ def random_string(length=6):
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
-    if request.method == 'POST':
+    if request.method == 'POST': 
         url = request.form['url']
         short = random_string()
         links[short] = url
-        return f"Here’s your hidden link: http://127.0.0.1:5000/{short}"
+        return f"Here’s your hidden link: https://fn-random-link-generator.onrender.com/{short}"
     return '''
-    <h1>Link Hider</h1>
+    <h1>Link Hider</h1> 
     <form method="POST">
         Link: <input name="url">
         <input type="submit">
@@ -29,7 +30,8 @@ def go(short):
         return redirect(links[short])
     return "Oops! Link not found."
 
-if __name__ == '__main__':
-    app.run(debug=True)
-
+# 🧩 Correct Run Command for Render:
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)
 
