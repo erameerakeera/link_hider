@@ -8,16 +8,13 @@
         body {
             margin: 0;
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(to bottom right, #0b092e, #1e1c3b);
-            color: white;
+            background-image: url('https://media-hosting.imagekit.io//4c9826b118934996/Background.png?Expires=1836986318&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=byr9uCU0eKztsYG~1o8ehrMoNvfNZvh~TFi7oD6aWHRyorbUt9SVoUtLn8Wt3fejrEKmQmo67UzqCwsLX7oD7B2ZoYBkDPHhiG6O0~2RnEwiStyKIREciT0MnhBFgDLME5pKs2j1rCjSot55qZypW0WgMlIjUO6XzlYreWH~7pg~vZce-ZzFYphm6N40WPUqKa3ooo~R1vCVtgNUt267ytOPZZrkvDP7DJUckKKin8bbxQJng~dL8~Z5zx2WYm5oh79G6FdTWp864KhDMIf8W9s-LiTPlIyjOrdFSU1o84OjXpnW4lCSC4y553Rnv1E8eWssrrgSIBXn3ovoHh8f4g__');
+            background-size: cover;
+            background-position: center;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-image: url('https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=1950&q=80');
-            background-size: cover;
-            background-position: center;
-            backdrop-filter: blur(6px);
         }
 
         .container {
@@ -57,76 +54,41 @@
         }
 
         input[type="submit"] {
-            background: #635bff;
+            padding: 12px 24px;
+            background-color: #635bff;
             color: white;
-            font-weight: bold;
-            padding: 12px 25px;
             border: none;
-            border-radius: 8px;
-            font-size: 16px;
+            border-radius: 5px;
             cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        input[type="submit"]:hover {
-            background: #7a6fff;
-            box-shadow: 0 0 12px #635bff;
+            font-size: 16px;
         }
 
         .result {
             margin-top: 20px;
             font-size: 18px;
-            word-break: break-word;
         }
 
-        .copy-btn {
-            margin-top: 10px;
-            background: transparent;
-            border: 2px solid #635bff;
-            color: #635bff;
-            padding: 8px 16px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: 0.3s ease;
-        }
-
-        .copy-btn:hover {
-            background: #635bff;
-            color: white;
-        }
-
-        @media (max-width: 600px) {
-            h1 { font-size: 24px; }
-            input[type="text"] { width: 100%; }
-            .logo { width: 120px; }
+        .result a {
+            color: #00eaff;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <img class="logo" src="https://media-hosting.imagekit.io//4dc9afa6d85a4e4e/FN-Partners-1.jpg?Expires=1836899686&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=rsa4pBoyh9aG-s1Wl70-B5T4lx8hGjEOPRWKJZ0Az5msmCSgZDdXpnlIoKwmboYlMBCc4pc9dXKpCTHk2Jo8sCujlbxY87lXwJdYAnAhV9YwxtJ1GnfS~SFa0qTbEA08Dgh87wewx6voTb2Efx7PFLOKj-4nEZtJVYp694BAD8HdCUPHVNlkYyqfwDApLmDVDm-esEvx-HmasHlisWFZ5NcwDkayUxHKGndqsErRK7AtJxxP~0gdRncSc8wHdGWqKP7S-26NlbB~bqtr4r1ZsKt3xn7ipX4gv8huk~-7BEP3R5JFj4Db4KGAWiJEbOkhi~aVaZCX2cXcisPblDz9tw__" alt="FundedNext Logo">
-        <h1>Link Hider 🔗</h1>
+        <img src="https://media-hosting.imagekit.io//4dc9afa6d85a4e4e/FN-Partners-1.jpg?Expires=1836899686&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=rsa4pBoyh9aG-s1Wl70-B5T4lx8hGjEOPRWKJZ0Az5msmCSgZDdXpnlIoKwmboYlMBCc4pc9dXKpCTHk2Jo8sCujlbxY87lXwJdYAnAhV9YwxtJ1GnfS~SFa0qTbEA08Dgh87wewx6voTb2Efx7PFLOKj-4nEZtJVYp694BAD8HdCUPHVNlkYyqfwDApLmDVDm-esEvx-HmasHlisWFZ5NcwDkayUxHKGndqsErRK7AtJxxP~0gdRncSc8wHdGWqKP7S-26NlbB~bqtr4r1ZsKt3xn7ipX4gv8huk~-7BEP3R5JFj4Db4KGAWiJEbOkhi~aVaZCX2cXcisPblDz9tw__" class="logo" alt="FundedNext Logo">
+        <h1>🔗 Link Hider 🔒</h1>
         <form method="POST">
-            <input type="text" name="url" placeholder="Paste your link here" required><br>
+            <input type="text" name="url" placeholder="Enter your link here" required><br>
             <input type="submit" value="Generate Secret Link">
         </form>
 
         {% if masked_link %}
         <div class="result">
-            <p>Your secret link:</p>
-            <a id="secretLink" href="{{ masked_link }}" target="_blank">{{ masked_link }}</a><br>
-            <button class="copy-btn" onclick="copyLink()">Copy Link</button>
+            <p>Your secret link: <a href="{{ masked_link }}">{{ masked_link }}</a></p>
         </div>
         {% endif %}
     </div>
-
-    <script>
-        function copyLink() {
-            var link = document.getElementById("secretLink").href;
-            navigator.clipboard.writeText(link);
-            alert("Link copied to clipboard!");
-        }
-    </script>
 </body>
 </html>
 
